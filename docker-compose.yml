@@ -3,7 +3,7 @@ services:
     www:
         build: .
         ports: 
-            - "80:80"
+            - "8002:80"
         volumes:
             - ./vapi:/var/www/html/vapi
         links:
@@ -15,7 +15,7 @@ services:
           APP_ENV: local
           APP_KEY: "base64:JUXTsCKQubRlvxGv6sVwkFL2rJ/gSksD4B/68948Mww:"
           APP_DEBUG: "true"
-          APP_URL: http://vapi.test
+          APP_URL: http://localhost
           SERVER_PORT: 80
           LOG_CHANNEL: errorlog
           LOG_LEVEL: debug
