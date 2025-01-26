@@ -1,6 +1,6 @@
 {
     "info": {
-        "title": "vAPI",
+        "title": "vAPI-remediated",
         "version": "1.0.1",
         "description": "vAPI is Vulnerable Adversely Programmed Interface which is Self-Hostable API Interface that mimics OWASP API Top 10 scenarios in the means of Exercises."
     },

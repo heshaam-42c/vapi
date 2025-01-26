@@ -1,0 +1,5 @@
+apis:
+  OASFiles/vAPI-remediated.json:
+    alias: vapi
+  OASFiles/vAPI.json:
+    alias: vapi1

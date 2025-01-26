@@ -1,0 +1,1285 @@
+{
+  "version": "2.0.0",
+  "runtimeConfiguration": {
+    "environment": "default",
+    "laxTestingModeEnabled": false,
+    "apiConnectivityCheck": true,
+    "logLevel": "error",
+    "logDestination": "stdout+platform",
+    "logMaxFileSize": 2147483648,
+    "requestHeaderNameRequestId": "x-scan-request-id",
+    "requestHeaderNameScenarioId": "x-scan-scenario-id",
+    "requestHeaderNameRequestType": "x-scan-request-type",
+    "requestFlowrate": 100,
+    "requestTimeout": 30,
+    "requestTlsInsecureSkipVerify": true,
+    "responseFollowRedirection": false,
+    "responseMaxBodySizeScan": 10485760,
+    "happyPathOnly": false,
+    "maxRequestRetryAttempts": 5,
+    "maxScanDuration": 1800,
+    "memoryLimit": 2147483648,
+    "memoryTimeSpan": 10,
+    "reportMaxRequestSizeHappyPath": 8092,
+    "reportMaxRequestSizeTest": 8092,
+    "reportIncludeRequestBody": true,
+    "reportIncludeResponseBody": true,
+    "reportMaxHttpResponseSizeHappyPath": 8092,
+    "reportMaxBodySizeHappyPath": 8092,
+    "reportMaxHttpResponseSizeTest": 8092,
+    "reportMaxBodySizeTest": 8092,
+    "reportIssuesOnly": false,
+    "reportMaxIssues": 1000,
+    "reportMaxSize": 20971520,
+    "reportGenerateCurlCommand": true
+  },
+  "customizations": {
+    "happyPaths": {
+      "retry": 1,
+      "responsePolicy": {
+        "httpStatusExpected": true,
+        "mustBeConformant": true
+      },
+      "httpStatusExpected": [
+        "2XX",
+        "404"
+      ]
+    },
+    "tests": {
+      "responsePolicy": {
+        "httpStatusExpected": true,
+        "mustBeConformant": true
+      }
+    },
+    "requests": {}
+  },
+  "environments": {
+    "default": {
+      "variables": {
+        "Api1KeyAuth": {
+          "name": "SCAN42C_SECURITY_API1KEYAUTH",
+          "from": "environment",
+          "required": false
+        },
+        "Api2KeyAuth": {
+          "name": "SCAN42C_SECURITY_API2KEYAUTH",
+          "from": "environment",
+          "required": false
+        },
+        "Api4KeyAuth": {
+          "name": "SCAN42C_SECURITY_API4KEYAUTH",
+          "from": "environment",
+          "required": false
+        },
+        "Api5KeyAuth": {
+          "name": "SCAN42C_SECURITY_API5KEYAUTH",
+          "from": "environment",
+          "required": false
+        },
+        "Api6KeyAuth": {
+          "name": "SCAN42C_SECURITY_API6KEYAUTH",
+          "from": "environment",
+          "required": false
+        },
+        "Api7KeyAuth": {
+          "name": "SCAN42C_SECURITY_API7KEYAUTH",
+          "from": "environment",
+          "required": false
+        },
+        "Api8KeyAuth": {
+          "name": "SCAN42C_SECURITY_API8KEYAUTH",
+          "from": "environment",
+          "required": false
+        },
+        "WeakToken": {
+          "name": "SCAN42C_SECURITY_WEAKTOKEN",
+          "from": "environment",
+          "required": false
+        },
+        "host": {
+          "name": "SCAN42C_HOST",
+          "from": "environment",
+          "required": false,
+          "default": "http://localhost:8002"
+        },
+        "noauthAuth": {
+          "name": "SCAN42C_SECURITY_NOAUTHAUTH",
+          "from": "environment",
+          "required": false,
+          "default": "secret_to_be_overridden"
+        }
+      }
+    }
+  },
+  "operations": {
+    "/vapi/api1/user/{api1_id}:get": {
+      "operationId": "/vapi/api1/user/{api1_id}:get",
+      "request": {
+        "operationId": "/vapi/api1/user/{api1_id}:get",
+        "auth": [
+          "Api1KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api1/user/{api1_id}:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api1/user/{api1_id}",
+            "paths": [
+              {
+                "key": "api1_id",
+                "value": "22"
+              }
+            ]
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api1~1user~1{api1_id}:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api1/user/{api1_id}:put": {
+      "operationId": "/vapi/api1/user/{api1_id}:put",
+      "request": {
+        "operationId": "/vapi/api1/user/{api1_id}:put",
+        "auth": [
+          "Api1KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api1/user/{api1_id}:put",
+            "method": "PUT",
+            "url": "{{host}}/vapi/api1/user/{api1_id}",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "paths": [
+              {
+                "key": "api1_id",
+                "value": "21"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "{\"username\":\"testuser2\", \"name\":\"Test User 2\", \"course\":\"B.Tech\", \"password\": \"password123\"}"
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api1~1user~1{api1_id}:put/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api1/user:post": {
+      "operationId": "/vapi/api1/user:post",
+      "request": {
+        "operationId": "/vapi/api1/user:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api1/user:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api1/user",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "{\"username\": \"testuser\", \"name\": \"Test User\", \"course\": \"B.Tech\", \"password\": \"password123\"}"
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api1~1user:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api10/user/flag:get": {
+      "operationId": "/vapi/api10/user/flag:get",
+      "request": {
+        "operationId": "/vapi/api10/user/flag:get",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api10/user/flag:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api10/user/flag"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api10~1user~1flag:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api2/user/details:get": {
+      "operationId": "/vapi/api2/user/details:get",
+      "request": {
+        "operationId": "/vapi/api2/user/details:get",
+        "auth": [
+          "Api2KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api2/user/details:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api2/user/details"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api2~1user~1details:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api2/user/login:post": {
+      "operationId": "/vapi/api2/user/login:post",
+      "request": {
+        "operationId": "/vapi/api2/user/login:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api2/user/login:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api2/user/login",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"email\\\":\\\"\\\",\\r\\n    \\\"password\\\":\\\"\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api2~1user~1login:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api3/user:post": {
+      "operationId": "/vapi/api3/user:post",
+      "request": {
+        "operationId": "/vapi/api3/user:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api3/user:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api3/user",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"username\\\":\\\"\\\",\\r\\n    \\\"password\\\":\\\"\\\",\\r\\n    \\\"name\\\":\\\"\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api3~1user:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api4/login:post": {
+      "operationId": "/vapi/api4/login:post",
+      "request": {
+        "operationId": "/vapi/api4/login:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api4/login:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api4/login",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "example-x"
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api4~1login:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api4/otp/verify:post": {
+      "operationId": "/vapi/api4/otp/verify:post",
+      "request": {
+        "operationId": "/vapi/api4/otp/verify:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api4/otp/verify:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api4/otp/verify",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"otp\\\":\\\"9999\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api4~1otp~1verify:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api4/user:get": {
+      "operationId": "/vapi/api4/user:get",
+      "request": {
+        "operationId": "/vapi/api4/user:get",
+        "auth": [
+          "Api4KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api4/user:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api4/user"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api4~1user:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api5/user/{api5_id}:get": {
+      "operationId": "/vapi/api5/user/{api5_id}:get",
+      "request": {
+        "operationId": "/vapi/api5/user/{api5_id}:get",
+        "auth": [
+          "Api5KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api5/user/{api5_id}:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api5/user/{api5_id}",
+            "paths": [
+              {
+                "key": "api5_id",
+                "value": "fjhqxlldbjjhocyhttyqkzzdmeqlkzya"
+              }
+            ]
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api5~1user~1{api5_id}:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api5/user:post": {
+      "operationId": "/vapi/api5/user:post",
+      "request": {
+        "operationId": "/vapi/api5/user:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api5/user:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api5/user",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"username\\\":\\\"testuser2\\\",\\r\\n    \\\"password\\\":\\\"test123\\\",\\r\\n    \\\"name\\\":\\\"Test User\\\",\\r\\n    \\\"address\\\":\\\"ABC\\\",\\r\\n    \\\"mobileno\\\":\\\"888888888\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api5~1user:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api6/user/me:get": {
+      "operationId": "/vapi/api6/user/me:get",
+      "request": {
+        "operationId": "/vapi/api6/user/me:get",
+        "auth": [
+          "Api6KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api6/user/me:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api6/user/me"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api6~1user~1me:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api6/user:post": {
+      "operationId": "/vapi/api6/user:post",
+      "request": {
+        "operationId": "/vapi/api6/user:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api6/user:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api6/user",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"name\\\":\\\"\\\",\\r\\n    \\\"username\\\":\\\"\\\",\\r\\n    \\\"password\\\":\\\"\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api6~1user:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api7/user/key:get": {
+      "operationId": "/vapi/api7/user/key:get",
+      "request": {
+        "operationId": "/vapi/api7/user/key:get",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api7/user/key:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api7/user/key"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api7~1user~1key:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api7/user/login:get": {
+      "operationId": "/vapi/api7/user/login:get",
+      "request": {
+        "operationId": "/vapi/api7/user/login:get",
+        "auth": [
+          "Api7KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api7/user/login:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api7/user/login"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api7~1user~1login:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api7/user/logout:get": {
+      "operationId": "/vapi/api7/user/logout:get",
+      "request": {
+        "operationId": "/vapi/api7/user/logout:get",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api7/user/logout:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api7/user/logout"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api7~1user~1logout:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api7/user:post": {
+      "operationId": "/vapi/api7/user:post",
+      "request": {
+        "operationId": "/vapi/api7/user:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api7/user:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api7/user",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"username\\\":\\\"\\\",\\r\\n    \\\"password\\\":\\\"\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api7~1user:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api8/user/login:post": {
+      "operationId": "/vapi/api8/user/login:post",
+      "request": {
+        "operationId": "/vapi/api8/user/login:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api8/user/login:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api8/user/login",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"username\\\":\\\"\\\",\\r\\n    \\\"password\\\":\\\"\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api8~1user~1login:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api8/user/secret:get": {
+      "operationId": "/vapi/api8/user/secret:get",
+      "request": {
+        "operationId": "/vapi/api8/user/secret:get",
+        "auth": [
+          "Api8KeyAuth"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api8/user/secret:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/api8/user/secret"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api8~1user~1secret:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/api9/v2/user/login:post": {
+      "operationId": "/vapi/api9/v2/user/login:post",
+      "request": {
+        "operationId": "/vapi/api9/v2/user/login:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/api9/v2/user/login:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/api9/v2/user/login",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "example-cwyfrbvul3fvwnzozi"
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1api9~1v2~1user~1login:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/jwt/user:get": {
+      "operationId": "/vapi/jwt/user:get",
+      "request": {
+        "operationId": "/vapi/jwt/user:get",
+        "auth": [
+          "WeakToken"
+        ],
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/jwt/user:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/jwt/user"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1jwt~1user:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/jwt/user:post": {
+      "operationId": "/vapi/jwt/user:post",
+      "request": {
+        "operationId": "/vapi/jwt/user:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/jwt/user:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/jwt/user",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\r\\n    \\\"username\\\":\\\"\\\",\\r\\n    \\\"password\\\":\\\"\\\"\\r\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1jwt~1user:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/serversurfer:get": {
+      "operationId": "/vapi/serversurfer:get",
+      "request": {
+        "operationId": "/vapi/serversurfer:get",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/serversurfer:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/serversurfer"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1serversurfer:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/stickynotes:get": {
+      "operationId": "/vapi/stickynotes:get",
+      "request": {
+        "operationId": "/vapi/stickynotes:get",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/stickynotes:get",
+            "method": "GET",
+            "url": "{{host}}/vapi/stickynotes"
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1stickynotes:get/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    },
+    "/vapi/stickynotes:post": {
+      "operationId": "/vapi/stickynotes:post",
+      "request": {
+        "operationId": "/vapi/stickynotes:post",
+        "request": {
+          "type": "42c",
+          "details": {
+            "operationId": "/vapi/stickynotes:post",
+            "method": "POST",
+            "url": "{{host}}/vapi/stickynotes",
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "requestBody": {
+              "mode": "json",
+              "json": "\"{\\n    \\\"note\\\":\\\"Hello I am Tushar\\\"\\n}\""
+            }
+          }
+        },
+        "defaultResponse": "200",
+        "responses": {
+          "200": {
+            "expectations": {
+              "httpStatus": 200
+            }
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/~1vapi~1stickynotes:post/request"
+            }
+          ],
+          "fuzzing": true
+        }
+      ]
+    }
+  },
+  "authenticationDetails": [
+    {
+      "Api1KeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "Api1KeyAuth",
+        "credentials": {
+          "Api1KeyAuth": {
+            "credential": "{{Api1KeyAuth}}",
+            "description": "Api1KeyAuth security"
+          }
+        }
+      },
+      "Api2KeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "Api2KeyAuth",
+        "credentials": {
+          "Api2KeyAuth": {
+            "credential": "{{Api2KeyAuth}}",
+            "description": "Api2KeyAuth security"
+          }
+        }
+      },
+      "Api4KeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "Api4KeyAuth",
+        "credentials": {
+          "Api4KeyAuth": {
+            "credential": "{{Api4KeyAuth}}",
+            "description": "Api4KeyAuth security"
+          }
+        }
+      },
+      "Api5KeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "Api5KeyAuth",
+        "credentials": {
+          "Api5KeyAuth": {
+            "credential": "{{Api5KeyAuth}}",
+            "description": "Api5KeyAuth security"
+          }
+        }
+      },
+      "Api6KeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "Api6KeyAuth",
+        "credentials": {
+          "Api6KeyAuth": {
+            "credential": "{{Api6KeyAuth}}",
+            "description": "Api6KeyAuth security"
+          }
+        }
+      },
+      "Api7KeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "Api7KeyAuth",
+        "credentials": {
+          "Api7KeyAuth": {
+            "credential": "{{Api7KeyAuth}}",
+            "description": "Api7KeyAuth security"
+          }
+        }
+      },
+      "Api8KeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "Api8KeyAuth",
+        "credentials": {
+          "Api8KeyAuth": {
+            "credential": "{{Api8KeyAuth}}",
+            "description": "Api8KeyAuth security"
+          }
+        }
+      },
+      "WeakToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization-Token",
+        "default": "WeakToken",
+        "credentials": {
+          "WeakToken": {
+            "credential": "{{WeakToken}}",
+            "description": "WeakToken security"
+          }
+        }
+      },
+      "noauthAuth": {
+        "type": "bearer",
+        "default": "noauthAuth",
+        "credentials": {
+          "noauthAuth": {
+            "credential": "{{noauthAuth}}",
+            "description": "noauthAuth security"
+          }
+        }
+      }
+    }
+  ]
+}
